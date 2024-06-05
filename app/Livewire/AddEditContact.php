@@ -15,9 +15,12 @@ class AddEditContact extends Component
     protected function rules(){
         return [
             'data.name' => 'required',
-            'data.company_name' => 'required',
-            'data.phone_no' => 'required',
-            'data.email' => ['required','email',function($attribute, $value, $fail){
+            'data.company_name' => 'nullable',
+            'data.phone_no' => 'nullable',
+            'data.email' => ['nullable','email',function($attribute, $value, $fail){
+                if (!$value) {
+                    return;
+                }
                 $check_exists = DB::table('contacts')->where('added_by',auth()->user()->id)
                     ->where(DB::raw('LOWER(email)'), strtolower($value))
                     ->when($this->editing,fn ($q) => $q->where('id','!=', $this->editing))

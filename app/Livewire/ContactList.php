@@ -41,6 +41,7 @@ class ContactList extends Component
                     ->orWhere('phone_no', 'like',$search);
                 });
             })
+            ->orderBy('created_at','desc')
             ->paginate(10)
         ]);
     }

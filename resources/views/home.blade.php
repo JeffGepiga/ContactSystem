@@ -13,7 +13,8 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <a class="text-center" href="{{url('manage_contacts')}}" title="">Manage your Contacts Now!</a>
+                    <h4>Thank you for registering</h4>
+                    <a class="text-center" href="{{url('manage_contacts')}}" title="">Continue</a>
                 </div>
             </div>
         </div>
